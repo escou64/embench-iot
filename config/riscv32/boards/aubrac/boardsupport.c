@@ -36,3 +36,12 @@ stop_trigger ()
   __asm__ volatile ("addi x30, x0, 0" : : : "memory");
   __asm__ volatile ("addi x29, x0, 0" : : : "memory");
 }
+
+void __attribute__ ((noinline)) __attribute__ ((externally_visible))
+verify_trigger ()
+{
+  __asm__ volatile ("addi x30, x0, 1010" : : : "memory");
+  __asm__ volatile ("addi x29, x0, 101" : : : "memory");
+  __asm__ volatile ("addi x30, x0, 0" : : : "memory");
+  __asm__ volatile ("addi x29, x0, 0" : : : "memory");
+}
