@@ -20,10 +20,10 @@ start_trigger ()
 {
   __asm__ volatile ("li a0, 0" : : : "memory");
   __asm__ volatile ("csrrw x31, cycle, x0" : : : "memory");
-  __asm__ volatile ("addi x30, x0, 1010" : : : "memory");
-  __asm__ volatile ("addi x29, x0, 101" : : : "memory");
-  __asm__ volatile ("addi x30, x0, 0" : : : "memory");
-  __asm__ volatile ("addi x29, x0, 0" : : : "memory");
+  __asm__ volatile ("li x29, 0x101010" : : : "memory");
+  __asm__ volatile ("li x30, 0" : : : "memory");
+  __asm__ volatile ("li x29, 0" : : : "memory");
+  __asm__ volatile ("li x30, 0" : : : "memory");
 }
 
 void __attribute__ ((noinline)) __attribute__ ((externally_visible))
@@ -31,17 +31,17 @@ stop_trigger ()
 {
   __asm__ volatile ("li a0, 0" : : : "memory");
   __asm__ volatile ("csrrw x31, cycle, x0" : : : "memory");
-  __asm__ volatile ("addi x30, x0, 1010" : : : "memory");
-  __asm__ volatile ("addi x29, x0, 101" : : : "memory");
-  __asm__ volatile ("addi x30, x0, 0" : : : "memory");
-  __asm__ volatile ("addi x29, x0, 0" : : : "memory");
+  __asm__ volatile ("li x29, 0x101010" : : : "memory");
+  __asm__ volatile ("li x30, 1" : : : "memory");
+  __asm__ volatile ("li x29, 0" : : : "memory");
+  __asm__ volatile ("li x30, 0" : : : "memory");
 }
 
 void __attribute__ ((noinline)) __attribute__ ((externally_visible))
 verify_trigger ()
 {
-  __asm__ volatile ("addi x30, x0, 1010" : : : "memory");
-  __asm__ volatile ("addi x29, x0, 101" : : : "memory");
-  __asm__ volatile ("addi x30, x0, 0" : : : "memory");
-  __asm__ volatile ("addi x29, x0, 0" : : : "memory");
+  __asm__ volatile ("li x29, 0x101010" : : : "memory");
+  __asm__ volatile ("li x30, 2" : : : "memory");
+  __asm__ volatile ("li x29, 0" : : : "memory");
+  __asm__ volatile ("li x30, 0" : : : "memory");
 }
