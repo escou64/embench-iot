@@ -32,6 +32,7 @@ main (int argc __attribute__ ((unused)),
 
   /* bmarks that use arrays will check a global array rather than int result */
   correct = verify_benchmark (result);
+  verify_trigger(correct);
 
   return (!correct);
 

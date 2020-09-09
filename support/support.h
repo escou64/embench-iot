@@ -35,6 +35,7 @@ int verify_benchmark (int result);
 void initialise_board (void);
 void start_trigger (void);
 void stop_trigger (void);
+void verify_trigger (int correct);
 
 /* Every benchmark implements this for one-off data initialization.  This is
    only used for initialization that is independent of how often benchmark ()

@@ -38,7 +38,7 @@ stop_trigger ()
 }
 
 void __attribute__ ((noinline)) __attribute__ ((externally_visible))
-verify_trigger ()
+verify_trigger (int correct)
 {
   __asm__ volatile ("li x29, 0x101010" : : : "memory");
   __asm__ volatile ("li x30, 2" : : : "memory");
